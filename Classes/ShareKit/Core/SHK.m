@@ -130,7 +130,7 @@ BOOL SHKinit;
 		[[currentView parentViewController] dismissModalViewControllerAnimated:YES];
 		return;
 	}
-		
+
 	// Wrap the view in a nav controller if not already
 	if (![vc respondsToSelector:@selector(pushViewController:animated:)])
 	{
@@ -141,6 +141,10 @@ BOOL SHKinit;
 		
 		if ([nav respondsToSelector:@selector(modalTransitionStyle)])
 			nav.modalTransitionStyle = [SHK modalTransitionStyle];
+
+		UIColor* barTintColor = [SHK barTintColor];
+		if (barTintColor)
+			nav.navigationBar.tintColor = barTintColor;
 		
 		nav.navigationBar.barStyle = nav.toolbar.barStyle = [SHK barStyle];
 		
@@ -237,6 +241,14 @@ BOOL SHKinit;
 		return UIBarStyleBlackTranslucent;
 	
 	return UIBarStyleDefault;
+}
+
++ (UIColor*)barTintColor
+{
+	if (SHKBarTintColorRed >= 0 && SHKBarTintColorGreen >= 0 && SHKBarTintColorBlue >= 0)
+		return [UIColor colorWithRed:SHKBarTintColorRed/255.0 green:SHKBarTintColorGreen/255.0 blue:SHKBarTintColorBlue/255.0 alpha:0];
+
+	return nil;
 }
 
 + (UIModalPresentationStyle)modalPresentationStyle

@@ -121,6 +121,7 @@
 		return YES;
 	}
 	
+	mailController.navigationBar.tintColor = [SHK barTintColor];
 	mailController.mailComposeDelegate = self;
 	
 	NSString *body = [item customValueForKey:@"body"];
