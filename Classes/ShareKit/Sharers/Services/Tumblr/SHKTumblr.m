@@ -44,6 +44,11 @@ static NSString * const kTumblrWriteURL = @"https://www.tumblr.com/api/write";
     return YES;
 }
 
++ (BOOL)canAutoShare
+{
+	return NO;
+}
+
 #pragma mark -
 #pragma mark Configuration : Dynamic Enable
 
