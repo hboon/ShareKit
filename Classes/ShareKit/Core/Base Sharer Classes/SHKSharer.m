@@ -172,6 +172,10 @@
 		
 		if ([self respondsToSelector:@selector(modalTransitionStyle)])
 			self.modalTransitionStyle = [SHK modalTransitionStyle];
+
+		UIColor* barTintColor = [SHK barTintColor];
+		if (barTintColor)
+			self.navigationBar.tintColor = barTintColor;
 	}
 	return self;
 }
